@@ -1,0 +1,37 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner staringno = new Scanner(System.in);
+        System.out.print("enter the number starts from ");
+        int start = staringno.nextInt();
+
+        Scanner endingno = new Scanner(System.in);
+        System.out.print("enter the number to end it from ");
+        int end = endingno.nextInt();
+
+        int[] arr = new int[end + 1];
+        for (int i = start; i <= end; i++) {
+            arr[i] = 1;
+        }
+
+        for (int i = 2; i <= end; i++) {
+            if (arr[i] == 1) {
+                for (int j = i * 2; j <= end; j += i) {
+                    arr[j] = 0;
+                }
+            }
+        }
+
+        int count = 0;
+        int[] result = new int[end - start + 1];  
+
+        for (int i = start; i <= end; i++) {
+            if (arr[i] == 1) {
+                result[count] = i;
+                count++;
+                System.out.print( i);
+                System.out.print(" ");
+            }
+        }
+    }
+}
